@@ -6,4 +6,19 @@
       </node>
     </node>
   </facet>
+  <facet id="jpt.jpa">
+    <node name="libprov">
+      <node name="last-provider-used">
+        <attribute name="2.0" value="jpa-no-op-library-provider"/>
+        <attribute name="2.1" value="jpa-user-library-provider"/>
+      </node>
+    </node>
+    <node name="user.library.provider">
+      <node name="last.used.libraries">
+        <node name="2.1">
+          <node name="JPA"/>
+        </node>
+      </node>
+    </node>
+  </facet>
 </root>

@@ -30,6 +30,7 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\dev\priva\TeamTool\web"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -41,16 +42,17 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="groupId">
-			<item value="com.samuk.teamtool"/>
+			<item value="com.samuk"/>
 		</list>
 		<list key="package">
-			<item value="com.samuk.teamtool.tt_web"/>
-			<item value="com.samuk.teamtool"/>
-			<item value="com.samuk.teamtool.tt_orm"/>
+			<item value="com.samuk.sprint_tool_web"/>
+			<item value="com.samuk.webapp"/>
+			<item value="com.samuk.web"/>
 		</list>
 		<list key="artifactId">
-			<item value="tt-web"/>
-			<item value="tt-orm"/>
+			<item value="sprint-tool-web"/>
+			<item value="webapp"/>
+			<item value="web"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
