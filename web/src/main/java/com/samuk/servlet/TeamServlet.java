@@ -9,22 +9,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.samuk.orm.Member;
+import com.samuk.orm.Team;
+import com.samuk.services.TeamOperations;
 
-@WebServlet("/main")
-public class Main extends HttpServlet {
-	
+/**
+ * Servlet implementation class TeamServlet
+ */
+@WebServlet("/team/*")
+public class TeamServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private TeamOperations teamOps = new TeamOperations(); 
 	
-	
-    public Main() {
+    public TeamServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher r = request.getRequestDispatcher("/pages/main.jsp");
-
+		RequestDispatcher r = request.getRequestDispatcher("/pages/team.jsp");
+		
+		Team t = teamOps.find(Long.parseLong(request.getParameter("id")));
+		
+		request.setAttribute("team", t);
+		request.setAttribute("id", request.getParameter("id"));
 		
 		r.forward(request, response);
 		
