@@ -1,7 +1,10 @@
 package com.samuk.services;
 
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import com.samuk.orm.Sprint;
 
@@ -40,6 +43,14 @@ public class SprintOperations implements ObjectOperations<Sprint>{
 		em.getTransaction().commit();
 		em.close();
 		
+	}
+
+
+	@Override
+	public List<Sprint> listAll() {
+		em = Producer.getEntityManager();
+		TypedQuery<Sprint> q = em.createQuery("SELECT s FROM Sprint s", Sprint.class);
+		return q.getResultList();
 	}
 
 

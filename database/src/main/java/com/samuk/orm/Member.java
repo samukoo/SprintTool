@@ -17,7 +17,7 @@ public class Member {
 	private Role role;
 
 	@ManyToOne
-	@JoinColumn(nullable=true)
+	@JoinColumn(nullable=true, referencedColumnName = "eid")
 	private Team team;
 
 	public Member(){}

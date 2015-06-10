@@ -10,7 +10,9 @@ public class Producer {
 	
 	public static EntityManager getEntityManager(){
 		EntityManagerFactory emf = null;
+
 		emf = Persistence.createEntityManagerFactory("sprint_tool");
+//		emf = Persistence.createEntityManagerFactory("sprint_tool");
 		em = emf.createEntityManager();
 		em.getTransaction().begin();
 		return em;

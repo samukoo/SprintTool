@@ -22,6 +22,14 @@ public class Team {
 		this.team_description = team_description;
 	}
 
+	public Long getEid() {
+		return eid;
+	}
+
+	public void setEid(Long eid) {
+		this.eid = eid;
+	}
+
 	public String getTeam_name() {
 		return team_name;
 	}
@@ -43,7 +51,5 @@ public class Team {
 		return "Team [eid=" + eid + ", team_name=" + team_name
 				+ ", team_description=" + team_description + "]";
 	}
-	
-	
 	
 }

@@ -11,7 +11,7 @@ public class SprintOperationsTest {
 
 	SprintOperations spiOps = new SprintOperations();
 
-	@Test
+//	@Test
 	public void add_Sprints_to_DB() {
 
 		List<Sprint> sprintList = new ArrayList<Sprint>();

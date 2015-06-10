@@ -1,6 +1,9 @@
 package com.samuk.services;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import com.samuk.orm.Team;
 
@@ -35,6 +38,13 @@ public class TeamOperations implements ObjectOperations<Team> {
 		em.remove(em.find(Team.class, id));
 		em.getTransaction().commit();
 		em.close();
+	}
+
+	@Override
+	public List<Team> listAll() {
+		em = Producer.getEntityManager();
+		TypedQuery<Team> q = em.createQuery("SELECT t FROM Team t", Team.class);
+		return q.getResultList();
 	}
 
 

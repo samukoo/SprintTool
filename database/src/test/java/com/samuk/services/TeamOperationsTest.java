@@ -2,7 +2,6 @@ package com.samuk.services;
 
 import javax.persistence.EntityManager;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import com.samuk.orm.Team;
@@ -12,7 +11,7 @@ public class TeamOperationsTest {
 	TeamOperations teaOps = new TeamOperations();
 	private String deleteQuery = "DELETE FROM Team t";
 
-	@Before
+//	@Before
 	public void setup() {
 		// setup
 		System.out.println("Clear table");
@@ -27,7 +26,7 @@ public class TeamOperationsTest {
 
 	@Test
 	public void test_create_new_team() {
-		Team team = new Team("foo", "bar");
+		Team team = new Team("SQL", "Sql development");
 		teaOps.create(team);
 		
 	}
