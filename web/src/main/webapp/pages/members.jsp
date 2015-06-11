@@ -26,9 +26,9 @@
 			<tbody>
 				<c:forEach items="${members}" var="member">
 					<tr>
-						<td>${member.name}</td>
+						<td><a href="user?user=${member.mid}">${member.name}</a> </td>
 						<td>${member.role}</td>
-						<td><a href="team?id=${member.team.eid}">${member.team.team_description}</a></td>
+						<td><a href="team/${member.team.eid}">${member.team.team_description}</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
