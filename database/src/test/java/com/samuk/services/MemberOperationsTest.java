@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import java.util.Iterator;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 
@@ -13,6 +14,7 @@ import org.junit.Test;
 import com.samuk.data.Import;
 import com.samuk.orm.Member;
 import com.samuk.orm.Role;
+import com.samuk.orm.Team;
 
 public class MemberOperationsTest {
 
@@ -70,7 +72,7 @@ public class MemberOperationsTest {
 			memOps.create(i.readMembers().get(j));
 	}
 	
-//	@Test
+	@Test
 	public void get_all_members_as_list(){
 		Iterator<Member> im = memOps.listAll().iterator();
 		while(im.hasNext()){
@@ -78,5 +80,22 @@ public class MemberOperationsTest {
 		}
 		
 	}
+	
+	@Test
+	public void getAllTeamMembers(){
+		TeamOperations teamOps = new TeamOperations();
+		Team t = teamOps.find(5L);
+		
+		List<Member> res = memOps.listAllTeamMembers(t);
+		assertNotNull(res);
+		
+		for(Member m : res){
+			System.out.println(m.getName());
+		}
+		
+		
+	}
+	
+	
 	
 }

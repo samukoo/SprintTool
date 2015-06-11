@@ -3,8 +3,6 @@ package com.samuk.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-
 import com.samuk.orm.Sprint;
 
 public class SprintOperationsTest {

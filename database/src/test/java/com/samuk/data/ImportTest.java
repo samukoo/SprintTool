@@ -4,8 +4,6 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
-import org.junit.Test;
-
 import com.samuk.orm.Member;
 
 public class ImportTest {
