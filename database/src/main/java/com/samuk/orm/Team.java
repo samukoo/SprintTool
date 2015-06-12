@@ -11,15 +11,15 @@ public class Team {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	Long eid;
-	String team_name;
-	String team_description;
+	String name;
+	String description;
 	
 	public Team(){}
 	
-	public Team(String team_name, String team_description) {
+	public Team(String name, String description) {
 		super();
-		this.team_name = team_name;
-		this.team_description = team_description;
+		this.name = name;
+		this.description = description;
 	}
 
 	public Long getEid() {
@@ -30,26 +30,26 @@ public class Team {
 		this.eid = eid;
 	}
 
-	public String getTeam_name() {
-		return team_name;
+	public String getName() {
+		return name;
 	}
 
-	public void setTeam_name(String team_name) {
-		this.team_name = team_name;
+	public void setName(String team_name) {
+		this.name = team_name;
 	}
 
-	public String getTeam_description() {
-		return team_description;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setTeam_description(String team_description) {
-		this.team_description = team_description;
+	public void setDescription(String team_description) {
+		this.description = team_description;
 	}
 
 	@Override
 	public String toString() {
-		return "Team [eid=" + eid + ", team_name=" + team_name
-				+ ", team_description=" + team_description + "]";
+		return "Team [eid=" + eid + ", team_name=" + name
+				+ ", description=" + description + "]";
 	}
 	
 }

@@ -34,7 +34,9 @@ public class Import {
 		
 		Sheet sheet = wb.getSheet("Sheet1");
 		System.out.println(sheet.getLastRowNum());
+		
 		List<Row>rowList=new ArrayList<Row>();
+		
 		for(int  j=0 ; j<3 ; j++ ){
 			Row r = sheet.getRow(j);
 			rowList.add(r);
