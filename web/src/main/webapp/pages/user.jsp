@@ -5,12 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bootstrap 101 Template</title>
+<title>${user.name}</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 <body>
-		<nav class="navbar navbar-inverse navbar-fixed-top">
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -19,13 +20,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">${prop['members.header.menu.brand'] }</a>
+          <p class="navbar-brand">${user.name}</p>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="main">${prop['header.menu.home'] }</a></li>
-            <li><a href="members">${prop['header.menu.members'] }</a></li>
-            <li><a href="team">${prop['header.menu.teams'] }</a></li>
+            <li><a href="main">Home</a></li>
+            <li><a href="members">Members</a></li>
+            <li><a href="#contact">Contact</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -42,10 +43,15 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+	
+	<br>
+	<br>
+	<br>
+	<p>User page for ${user.name} who is a ${user.role } in ${user.team.description } team </p>
 
-	<br>
-	<br>
-	<br>
+	<form action="/web/main">
+	<button type="submit" class="btn btn-info">Main</button></form>
+
 
 	<div class="col-md-6">
 		<table class="table">
@@ -53,49 +59,27 @@
 				<tr>
 					<th>nimi</th>
 					<th>rooli</th>
-					<th>team</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${members}" var="member">
+					
 					<tr>
-						<td><a href="user?id=${member.mid}">${member.name}</a> </td>
-						<td>${member.role}</td>
-						<td><a href="team?id=${member.team.eid}">${member.team.description}</a></td>
+						<td></td>
+						<td></td>
 					</tr>
-				</c:forEach>
+					
 			</tbody>
 		</table>
 	</div>
 
 
-	<p>
-	<form action="members" method="post">
-		First name:<br> <input type="text" name="firstname" value=""><br>
-		Last name:<br> <input type="text" name="lastname" value=""><br>
-		Role:<br> 
-		<select name ="role">
-			<c:forEach items="${roles}" var="role">
-				<option value="${role}">${role}</option>
-			</c:forEach>
-		</select><br>
-		Team:<br> 
-		<c:forEach items="${teams}" var="team">
-			<input type="radio" name="team" value="${team.eid}">${team.name}<br> 
-		</c:forEach>
-
-		
 
 
 
 
-		<button type="submit" class="btn btn-info">Save</button>
 
 
-
-	</form>
-	</p>
-
+	
 
 
 	<script

@@ -10,7 +10,8 @@
 
 </head>
 <body>
-		<nav class="navbar navbar-inverse navbar-fixed-top">
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -19,13 +20,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">${prop['members.header.menu.brand'] }</a>
+          <p class="navbar-brand">Manage teams</p>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="main">${prop['header.menu.home'] }</a></li>
-            <li><a href="members">${prop['header.menu.members'] }</a></li>
-            <li><a href="team">${prop['header.menu.teams'] }</a></li>
+            <li><a href="main">Home</a></li>
+            <li><a href="members">Members</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -42,7 +42,7 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-
+	
 	<br>
 	<br>
 	<br>
@@ -51,51 +51,36 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>nimi</th>
-					<th>rooli</th>
-					<th>team</th>
+					<th>Team</th>
+					<th>Description</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${members}" var="member">
-					<tr>
-						<td><a href="user?id=${member.mid}">${member.name}</a> </td>
-						<td>${member.role}</td>
-						<td><a href="team?id=${member.team.eid}">${member.team.description}</a></td>
-					</tr>
-				</c:forEach>
+					<c:forEach items="${teams }" var="team">
+						<tr>
+							<td><a href="team?id=${team.eid }">${team.name }</a></td>
+							<td>${team.description }</td>
+						</tr>
+					</c:forEach>
 			</tbody>
 		</table>
 	</div>
 
-
-	<p>
-	<form action="members" method="post">
-		First name:<br> <input type="text" name="firstname" value=""><br>
-		Last name:<br> <input type="text" name="lastname" value=""><br>
-		Role:<br> 
-		<select name ="role">
-			<c:forEach items="${roles}" var="role">
-				<option value="${role}">${role}</option>
-			</c:forEach>
-		</select><br>
-		Team:<br> 
-		<c:forEach items="${teams}" var="team">
-			<input type="radio" name="team" value="${team.eid}">${team.name}<br> 
-		</c:forEach>
-
-		
-
-
-
-
-		<button type="submit" class="btn btn-info">Save</button>
-
-
-
+	<form action="team" method="post">
+	
+		<p>Team name: <input type="text" name="name" value=""></p>
+		<p>Team description: <input type="text" name="description" value=""></p>
+	
+	
+		<button type="submit" class="btn btn-info">Add new team</button>
 	</form>
-	</p>
 
+
+
+
+
+
+	
 
 
 	<script

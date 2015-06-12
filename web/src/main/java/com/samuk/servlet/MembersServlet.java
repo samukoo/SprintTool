@@ -14,6 +14,7 @@ import com.samuk.orm.Role;
 import com.samuk.orm.Team;
 import com.samuk.services.MemberOperations;
 import com.samuk.services.TeamOperations;
+import com.samuk.utils.PropertyLoader;
 
 /**
  * Servlet implementation class Members
@@ -23,7 +24,8 @@ public class MembersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MemberOperations memOps = new MemberOperations();
     private TeamOperations teamOps = new TeamOperations();   
-	
+    private PropertyLoader pl = new PropertyLoader();
+    private final String FILE = "teamtool_fi.properties";
 	
     public MembersServlet() {
         super();
@@ -33,6 +35,7 @@ public class MembersServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher r = request.getRequestDispatcher("/pages/members.jsp");
 		
+		request.setAttribute("prop", pl.getProperties(FILE));
 		request.setAttribute("members", memOps.listAll());
 		request.setAttribute("teams", teamOps.listAll());
 		request.setAttribute("roles", Role.values());
@@ -44,17 +47,10 @@ public class MembersServlet extends HttpServlet {
 		RequestDispatcher r = request.getRequestDispatcher("/pages/members.jsp");
 		Member m = new Member();
 		
-		System.out.println(request.getParameter("firstname"));
-		System.out.println(request.getParameter("lastname"));
-		System.out.println(request.getParameter("role"));
-		System.out.println("TIIMI: " + request.getParameter("team"));
 		
 		Long id = Long.valueOf(request.getParameter("team"));
-		System.out.println("Long:" +id);
 		
 		Team team = teamOps.find(id);
-		
-		System.out.println(team.getTeam_description());
 		
 		m.setName(request.getParameter("firstname") + " " + request.getParameter("lastname"));
 		m.setRole(Role.valueOf(request.getParameter("role")));
@@ -62,8 +58,10 @@ public class MembersServlet extends HttpServlet {
 		
 		memOps.create(m);
 		
+		request.setAttribute("prop", pl.getProperties(FILE));
 		request.setAttribute("members", memOps.listAll());
-		
+		request.setAttribute("teams", teamOps.listAll());
+		request.setAttribute("roles", Role.values());
 		
 		r.forward(request, response);
 	}

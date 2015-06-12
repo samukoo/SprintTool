@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bootstrap 101 Template</title>
-<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -47,7 +47,7 @@
 	<br>
 	<br>
 	<br>
-	<p>Team site for id: ${team.eid} with description: ${team.team_description }</p>
+	<p>Team site for id: ${team.eid} with description: ${team.description }</p>
 
 	<form action="/web/main">
 	<button type="submit" class="btn btn-info">Main</button></form>
@@ -64,7 +64,7 @@
 			<tbody>
 					<c:forEach items="${members}" var="member">
 					<tr>
-						<td>${member.name}</td>
+						<td><a href="user?id=${member.mid }">${member.name}</a></td>
 						<td>${member.role}</td>
 					</tr>
 					</c:forEach>
@@ -84,6 +84,6 @@
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
