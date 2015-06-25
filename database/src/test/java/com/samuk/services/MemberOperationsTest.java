@@ -64,7 +64,7 @@ public class MemberOperationsTest {
 		assertNull(memOps.find(1L));
 	}
 
-//	@Test
+	@Test
 	public void IT_import_members_and_save_into_DB()throws Exception{
 		Import i = new Import();
 		

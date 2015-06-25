@@ -10,47 +10,60 @@ import javax.persistence.criteria.Root;
 import com.samuk.orm.Member;
 import com.samuk.orm.Team;
 
-public class MemberOperations implements ObjectOperations<Member> {
+public class MemberOperations{
 
 	private EntityManager em = null;
 
-	@Override
 	public Member create(Member member) {
 		em = Producer.getEntityManager();
 		em.persist(member);
 		em.getTransaction().commit();
-		em.close();
+		em.clear();
 		return member;
 	}
 
-	@Override
 	public Member update(Member t) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	/**
+	 * remove by ID
+	 * @param mid
+	 */
 	public void remove(Long mid) {
 		em = Producer.getEntityManager();
 		em.remove(em.find(Member.class, mid));
 		em.getTransaction().commit();
-		em.close();
+		em.clear();
 
 	}
-
-	@Override
+	
+	/**
+	 * Find by ID
+	 * @param mid
+	 * @return
+	 */
 	public Member find(Long mid) {
 		em = Producer.getEntityManager();
 		Member member = em.find(Member.class, mid);
-		em.close();
+		em.clear();
 		return member;
 	}
 
-	@Override
+	/**
+	 * find by name
+	 * @param name
+	 * @return
+	 */
+	public Member find(String name){
+		Member member = null;
+		return member;
+	}
+	
+	
 	public List<Member> listAll() {
 		em = Producer.getEntityManager();
-//		TypedQuery<Member> q = em.createQuery("SELECT m FROM Member m", Member.class);
-//		return q.getResultList();
 		
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Member> query = cb.createQuery(Member.class);
