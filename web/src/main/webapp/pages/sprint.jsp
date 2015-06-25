@@ -20,12 +20,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <p class="navbar-brand">Manage sprints</p>
+          <a class="navbar-brand" href="#">Bootstrap theme</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="main">Home</a></li>
+            <li class="active"><a href="#">Home</a></li>
             <li><a href="members">Members</a></li>
+            <li><a href="#contact">Contact</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -47,39 +48,47 @@
 	<br>
 	<br>
 
+	<form action="/web/main">
+	<button type="submit" class="btn btn-info">Main</button></form>
+
+<P> TÄHÄN LISTATAAN SPRINTIN TEAMIN SISÄLTÖ. 
+
 	<div class="col-md-6">
-		<table class="table">
+		<table class="table" action="save" method="post">
 			<thead>
 				<tr>
-					<th>Sprint nr.</th>
-					<th>Description</th>
-					<th>Team</th>
+					<th>nimi</th>
+					<th>rooli</th>
+					<th>Commit-points</th>
 				</tr>
 			</thead>
 			<tbody>
-					<c:forEach items="${sprints }" var="sprint">
-						<tr>
-							<td><a href="sprint?id=${sprint.eid }">${sprint.week }</a></td>
-							<td>${sprint.description }</td>
-							<td>${sprint.team.description }</td>
-						</tr>
+				<form action="save" method="post">
+					<c:forEach items="${members}" var="member">
+					<tr>
+						<td><a href="user?id=${member.mid }">${member.name}</a></td>
+						<td>${member.role}</td>
+						
+						<td>
+						
+							
+							<p>Commit points: <input type="number" name="${member.name}" value=""></p>
+						
+						</td>
+					</tr>
 					</c:forEach>
+					<input type="hidden" name="sprint" value="${Sprint.eid }">
+					<button type="submit" class="btn btn-info">Add new team</button>
+				</form>
 			</tbody>
+		
 		</table>
+		
 	</div>
 
-	<div>
-	<form action="sprint" method="post">
-	
-		<p>Sprint week: <input type="text" name="week" value=""></p>
-		<p>Sprint description: <input type="text" name="description" value=""></p>
-		<p>Sprint team:<br>
-		<c:forEach items="${teams }" var="team">
-			 <input type="radio" name="team" value="${team.eid }">${team.name }<br>
-		</c:forEach>
-		<button type="submit" class="btn btn-info">Add new team</button>
-	</form>
-	</div>
+
+
+
 
 
 

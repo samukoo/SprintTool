@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.samuk.orm.Sprint;
+import com.samuk.services.MemberOperations;
 import com.samuk.services.SprintOperations;
 import com.samuk.services.TeamOperations;
 
@@ -25,14 +26,41 @@ public class SprintServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		
+		if(request.getParameter("id")==null){
+		
 		RequestDispatcher r = request.getRequestDispatcher("pages/sprints.jsp");
 
 		request.setAttribute("sprints", sprintOps.listAll());
 		request.setAttribute("teams", teamOps.listAll());
 		
 		r.forward(request, response);
+		}
+
+		else{
+			RequestDispatcher r = request.getRequestDispatcher("pages/sprint.jsp");
+			
+			Sprint s = sprintOps.find(Long.parseLong(request.getParameter("id")));
+			
+			MemberOperations memOps = new MemberOperations();
+			request.setAttribute("members", memOps.listAll());
+			request.setAttribute("Sprint", sprintOps.find(Long.parseLong(request.getParameter("id"))));
+			
+			System.out.println(s.getEid());
+			
+			r.forward(request, response);
+		}
+	
+	
+	
+	
+	
+	
 	}
 
+	/**
+	 * Add new sprint
+	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
@@ -40,7 +68,6 @@ public class SprintServlet extends HttpServlet {
 
 		Sprint sprint = new Sprint();
 		sprint.setWeek(Integer.parseInt(request.getParameter("week")));
-		sprint.setDescription(request.getParameter("description"));
 
 		sprintOps.create(sprint);
 
